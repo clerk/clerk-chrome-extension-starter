@@ -1,6 +1,37 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="https://clerk.dev?utm_source=github&utm_medium=clerk_expo" target="_blank">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./public/clerk-logo-dark.png">
+      <img src="./public/clerk-logo-light.png" height="64">
+    </picture>
+  </a>
+  <br />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Clerk Chrome Extension Starter
+
+This starter project shows how to use [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=chrome_extension_start) authentication in a React based [Chrome Extension](https://developer.chrome.com/docs/extensions/).
+
+[![chat on Discord](https://img.shields.io/discord/856971667393609759.svg?logo=discord)](https://discord.com/invite/b5rXHjAg7A)
+[![documentation](https://img.shields.io/badge/documentation-clerk-green.svg)](https://docs.clerk.dev)
+[![twitter](https://img.shields.io/twitter/follow/ClerkDev?style=social)](https://twitter.com/intent/follow?screen_name=ClerkDev)
+
+---
+
+**Clerk is Hiring!**
+
+Would you like to work on Open Source software and help maintain this repository? [Apply today!](https://apply.workable.com/clerk-dev/)
+
+---
+
+## Introduction
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It demonstrates a basic password or OTP flow using ClerkJS Components in a Chrome Extension Popup.
+
+<img src="./demo.png" height="400">
+
+This repo will be enhanced with examples of authentication redirection flows such as OAuth or Magic Links and advance extension patterns
+using [Manifest V3 service workers](https://developer.chrome.com/docs/extensions/mv3/service_workers/) and the new [chrome.storage API](https://developer.chrome.com/docs/extensions/reference/storage/).
 
 ## Available Scripts
 
