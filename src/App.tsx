@@ -1,5 +1,4 @@
 import "./App.css";
-
 import {
   SignedIn,
   SignedOut,
@@ -9,28 +8,36 @@ import {
   useUser,
   ClerkProvider,
 } from "@clerk/chrome-extension";
-import {
-  useNavigate,
-  Routes,
-  Route,
-  MemoryRouter
-} from "react-router-dom";
+import { useNavigate, Routes, Route, MemoryRouter } from "react-router-dom";
 
 function HelloUser() {
   const { isSignedIn, user } = useUser();
+  const { getToken, signOut } = useAuth();
   const clerk = useClerk();
+
+  const [sessionToken, setSessionToken] = React.useState("");
+
+  React.useEffect(() => {
+    const scheduler = setInterval(async () => {
+      const token = await getToken();
+      setSessionToken(token as string);
+    }, 1000);
+
+    return () => clearInterval(scheduler);
+  }, []);
 
   if (!isSignedIn) {
     return null;
   }
 
   return (
-    <>
+    <div>
       <p>Hi, {user.primaryEmailAddress?.emailAddress}!</p>
+      <p>Clerk Session Token: {sessionToken}</p>
       <p>
-        <button onClick={() => clerk.signOut()}>Sign out</button>
+        <button onClick={() => signOut()}>Sign out</button>
       </p>
-    </>
+    </div>
   );
 }
 
@@ -40,7 +47,10 @@ function ClerkProviderWithRoutes() {
   const navigate = useNavigate();
 
   return (
-    <ClerkProvider publishableKey={publishableKey} navigate={(to) => navigate(to)}>
+    <ClerkProvider
+      publishableKey={publishableKey}
+      navigate={(to) => navigate(to)}
+    >
       <div className="App">
         <header className="App-header">
           <p>Welcome to Clerk Chrome Extension Starter!</p>
@@ -55,20 +65,20 @@ function ClerkProviderWithRoutes() {
         </header>
         <main className="App-main">
           <Routes>
+            <Route path="/sign-up/*" element={<SignUp signInUrl="/" />} />
             <Route
-              path="/sign-up/*"
-              element={<SignUp signInUrl="/" />}
+              path="/"
+              element={
+                <>
+                  <SignedIn>
+                    <HelloUser />
+                  </SignedIn>
+                  <SignedOut>
+                    <SignIn afterSignInUrl="/" signUpUrl="/sign-up" />
+                  </SignedOut>
+                </>
+              }
             />
-            <Route path='/' element={
-              <>
-                <SignedIn>
-                  <HelloUser />
-                </SignedIn>
-                <SignedOut>
-                  <SignIn afterSignInUrl="/" signUpUrl="/sign-up" />
-                </SignedOut>
-              </>
-            } />
           </Routes>
         </main>
       </div>
