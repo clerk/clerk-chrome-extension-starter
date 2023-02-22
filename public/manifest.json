@@ -11,5 +11,7 @@
     "16": "logo192.png",
     "48": "logo192.png",
     "128": "logo192.png"
-  }
+  },
+  "host_permissions": ["*://YOUR_CLERK_FRONTEND_API_GOES_HERE/"],
+  "permissions": ["cookies", "storage"]
 }
