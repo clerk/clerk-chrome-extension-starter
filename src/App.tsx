@@ -6,14 +6,12 @@ import {
   SignIn,
   useAuth,
   useUser,
-  useClerk,
 } from "@clerk/clerk-react";
 import { ClerkProvider } from "./ClerkProvider";
 
 function HelloUser() {
   const { isSignedIn, user } = useUser();
   const { getToken, signOut } = useAuth();
-  const clerk = useClerk();
 
   const [sessionToken, setSessionToken] = React.useState("");
 
