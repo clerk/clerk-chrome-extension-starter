@@ -13,7 +13,6 @@ import { useNavigate, Routes, Route, MemoryRouter } from "react-router-dom";
 function HelloUser() {
   const { isSignedIn, user } = useUser();
   const { getToken, signOut } = useAuth();
-  const clerk = useClerk();
 
   const [sessionToken, setSessionToken] = React.useState("");
 
