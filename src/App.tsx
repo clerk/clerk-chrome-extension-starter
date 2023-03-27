@@ -6,8 +6,8 @@ import {
   SignIn,
   useAuth,
   useUser,
-} from "@clerk/clerk-react";
-import { ClerkProvider } from "./ClerkProvider";
+  ClerkProvider,
+} from "@clerk/chrome-extension";
 
 function HelloUser() {
   const { isSignedIn, user } = useUser();
@@ -43,7 +43,7 @@ function App() {
   const publishableKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || "";
 
   return (
-    <ClerkProvider publishableKey={publishableKey}>
+    <ClerkProvider publishableKey={publishableKey} syncSessionWithTab>
       <div className="App">
         <header className="App-header">
           <p>Welcome to Clerk Chrome Extension Starter!</p>
