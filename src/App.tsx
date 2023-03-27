@@ -1,14 +1,14 @@
-import "./App.css";
+import React from "react";
+import { Routes, Route, MemoryRouter, useNavigate } from "react-router-dom";
 import {
   SignedIn,
   SignedOut,
   SignIn,
   SignUp,
-  useClerk,
+  useAuth,
   useUser,
   ClerkProvider,
 } from "@clerk/chrome-extension";
-import { useNavigate, Routes, Route, MemoryRouter } from "react-router-dom";
 
 function HelloUser() {
   const { isSignedIn, user } = useUser();
@@ -49,6 +49,7 @@ function ClerkProviderWithRoutes() {
     <ClerkProvider
       publishableKey={publishableKey}
       navigate={(to) => navigate(to)}
+      syncSessionWithTab
     >
       <div className="App">
         <header className="App-header">
