@@ -10,6 +10,8 @@ import {
   ClerkProvider,
 } from "@clerk/chrome-extension";
 
+import "./App.css";
+
 function HelloUser() {
   const { isSignedIn, user } = useUser();
   const { getToken, signOut } = useAuth();

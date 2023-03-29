@@ -7,6 +7,7 @@
 <<<<<<< HEAD
     "@clerk/chrome-extension": "^0.3.24",
     "react": "^18.2.0",
+<<<<<<< HEAD
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
 =======
@@ -17,6 +18,9 @@
 >>>>>>> 34de95f (fix: Use @clerk/chrome-extension package)
     "react": "^18.2.0",
 >>>>>>> 7b95415 (Update clerk dependencies and split dev & production deps)
+=======
+    "react-router-dom": "^6.9.0",
+>>>>>>> a95a9de (fix: issue with routing)
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
