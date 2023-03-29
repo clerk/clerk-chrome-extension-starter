@@ -4,10 +4,17 @@ import {
   SignedIn,
   SignedOut,
   SignIn,
+  SignUp,
   useClerk,
   useUser,
   ClerkProvider,
 } from "@clerk/chrome-extension";
+import {
+  useNavigate,
+  Routes,
+  Route,
+  MemoryRouter
+} from "react-router-dom";
 
 function HelloUser() {
   const { isSignedIn, user } = useUser();
@@ -27,11 +34,13 @@ function HelloUser() {
   );
 }
 
-function App() {
-  const publishableKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || "";
+const publishableKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY || "";
+
+function ClerkProviderWithRoutes() {
+  const navigate = useNavigate();
 
   return (
-    <ClerkProvider publishableKey={publishableKey}>
+    <ClerkProvider publishableKey={publishableKey} navigate={(to) => navigate(to)}>
       <div className="App">
         <header className="App-header">
           <p>Welcome to Clerk Chrome Extension Starter!</p>
@@ -45,15 +54,33 @@ function App() {
           </a>
         </header>
         <main className="App-main">
-          <SignedOut>
-            <SignIn />
-          </SignedOut>
-          <SignedIn>
-            <HelloUser />
-          </SignedIn>
+          <Routes>
+            <Route
+              path="/sign-up/*"
+              element={<SignUp signInUrl="/" />}
+            />
+            <Route path='/' element={
+              <>
+                <SignedIn>
+                  <HelloUser />
+                </SignedIn>
+                <SignedOut>
+                  <SignIn afterSignInUrl="/" signUpUrl="/sign-up" />
+                </SignedOut>
+              </>
+            } />
+          </Routes>
         </main>
       </div>
     </ClerkProvider>
+  );
+}
+
+function App() {
+  return (
+    <MemoryRouter>
+      <ClerkProviderWithRoutes />
+    </MemoryRouter>
   );
 }
 
