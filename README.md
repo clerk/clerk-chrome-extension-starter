@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://clerk.dev?utm_source=github&utm_medium=clerk_expo" target="_blank">
+  <a href="https://clerk.com?utm_source=github&utm_medium=clerk_expo" target="_blank">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./public/clerk-logo-dark.png">
       <img src="./public/clerk-logo-light.png" height="64">
@@ -15,6 +15,8 @@ This starter project shows how to use [Clerk](https://www.clerk.dev/?utm_source=
 [![chat on Discord](https://img.shields.io/discord/856971667393609759.svg?logo=discord)](https://discord.com/invite/b5rXHjAg7A)
 [![documentation](https://img.shields.io/badge/documentation-clerk-green.svg)](https://docs.clerk.dev)
 [![twitter](https://img.shields.io/twitter/follow/ClerkDev?style=social)](https://twitter.com/intent/follow?screen_name=ClerkDev)
+
+If you run into issues, be sure to check our [main npm page](https://www.npmjs.com/package/@clerk/chrome-extension) for any updated settings/steps you may need to be aware of.
 
 ---
 
