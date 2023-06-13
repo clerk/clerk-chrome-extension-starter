@@ -33,6 +33,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repo will be enhanced with examples of authentication redirection flows such as OAuth or Magic Links and advance extension patterns
 using [Manifest V3 service workers](https://developer.chrome.com/docs/extensions/mv3/service_workers/) and the new [chrome.storage API](https://developer.chrome.com/docs/extensions/reference/storage/).
 
+## Deploy to Production
+
+Setting the `allowed_origins` is **REQUIRED** for both **Development** and **Production** instances when using the WebSSO use case.
+
+Add your Chrome extension origin to your instance `allowed_origins` using BAPI:
+
+```bash
+curl  -X PATCH https://api.clerk.com/v1/instance \
+      -H "Authorization: Bearer sk_secret_key" \
+      -H "Content-type: application/json" \
+      -d '{"allowed_origins": ["chrome-extension://extension_id_goes_here"]}'
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
