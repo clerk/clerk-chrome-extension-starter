@@ -33,6 +33,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repo will be enhanced with examples of authentication redirection flows such as OAuth or Magic Links and advance extension patterns
 using [Manifest V3 service workers](https://developer.chrome.com/docs/extensions/mv3/service_workers/) and the new [chrome.storage API](https://developer.chrome.com/docs/extensions/reference/storage/).
 
+## Development
+
+The `Enable URL-based session syncing` should be `DISABLED` from the `Clerk Dashboard > Setting` for a development instance to support @clerk/chrome-extension functionality.
+
 ## Deploy to Production
 
 Setting the `allowed_origins` is **REQUIRED** for both **Development** and **Production** instances when using the WebSSO use case.
